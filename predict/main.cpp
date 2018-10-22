@@ -36,7 +36,7 @@ void read_file(char *file_name, double mileage)
     std::getline(file, str);
     result.theta1 = std::stod(str);
 
-    std::cout << "Estimated price = " << double (result.theta0 + result.theta1 * mileage);
+    std::cout << "Estimated price = " << double (result.theta0 + result.theta1 * mileage) << std::endl;
     file.close();
 }
 
@@ -45,6 +45,6 @@ int main() {
 
     std::cout << "Enter the mileage: ";
     std::cin >> mileage;
-    read_file("output.linpreg", mileage);
+    read_file((char*)"output.linpreg", mileage);
     return 0;
 }

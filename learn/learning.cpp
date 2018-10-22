@@ -9,7 +9,7 @@ double  SumTheta0(double theta0, double theta1, std::vector<data_csv> data, doub
 {
     double sum = 0;
 
-    for (int i = 0; i <data.size() ; ++i) {
+    for (size_t i = 0; i <data.size() ; ++i) {
         sum+= estimatePrice(theta0, theta1, data[i].km + scale) - data[i].price;
     }
     return sum;
@@ -19,7 +19,7 @@ double  SumTheta1(double theta0, double theta1, std::vector<data_csv> data, doub
 {
     double sum = 0;
 
-    for (int i = 0; i <data.size() ; ++i) {
+    for (size_t i = 0; i <data.size() ; ++i) {
         sum+= (estimatePrice(theta0, theta1, data[i].km + scale ) - data[i].price) * data[i].km;
     }
     return sum;
@@ -36,7 +36,7 @@ learning_struct GradientDescent (double theta0, double theta1, double LearningRa
     double min = 999999;
 
 
-    for (int i = 0; i <data.size() ; ++i) {
+    for (size_t i = 0; i <data.size() ; ++i) {
         if (data[i].km > max)
             max = data[i].km;
         if (data[i].km < min)
@@ -46,7 +46,7 @@ learning_struct GradientDescent (double theta0, double theta1, double LearningRa
     double scale = max - min;
     double scaled_min = min / scale;
 
-    for (int i = 0; i <data.size() ; ++i) {
+    for (size_t i = 0; i <data.size() ; ++i) {
         data[i].km = (data[i].km - min) / scale;
     }
 

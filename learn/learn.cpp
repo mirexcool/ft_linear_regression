@@ -60,7 +60,6 @@ void read_file(char *file_name)
     file.close();
     result =  GradientDescent(0, 0, 0.0001, 0.0001, data_vec);
     file2 << result.theta0 << std::endl << result.theta1;
-    std::cout << result.theta0 << ":" << result.theta1;
     file2.close();
 }
 
