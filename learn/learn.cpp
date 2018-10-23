@@ -59,8 +59,15 @@ void read_file(char *file_name)
         errors(1, line);
     file.close();
     result =  GradientDescent(0, 0, 0.0001, 0.0001, data_vec);
-    file2 << result.theta0 << std::endl << result.theta1;
-    std::cout << result.theta0 << ":" << result.theta1;
+    file2 << result.theta0 << std::endl << result.theta1 << std::endl;
+    double precision = 0;
+    size_t i = 0;
+    for (i = 0; i < data_vec.size(); ++i)
+    {
+        precision+=abs(data_vec[i].price - (result.theta0 + result.theta1*data_vec[i].km));
+    }
+    precision/=(i+1);
+    file2 << precision;
     file2.close();
 }
 
