@@ -25,7 +25,7 @@ void read_file(char *file_name, double mileage)
     std::ifstream           file(file_name);
     std::string             str;
     learning_struct         result;
-
+    double                  precision = 0;
     if (file.fail())
     {
         std::cout << "Error opening file! :(" << std::endl;
@@ -35,8 +35,9 @@ void read_file(char *file_name, double mileage)
     result.theta0 = std::stod(str);
     std::getline(file, str);
     result.theta1 = std::stod(str);
-
-    std::cout << "Estimated price = " << double (result.theta0 + result.theta1 * mileage) << std::endl;
+    std::getline(file, str);
+    precision = std::stod(str);
+    std::cout << "Estimated price = " << double (result.theta0 + result.theta1 * mileage) << " +- " << precision << std::endl;
     file.close();
 }
 
